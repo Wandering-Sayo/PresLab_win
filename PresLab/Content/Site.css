@@ -1,0 +1,136 @@
+﻿html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background: -webkit-linear-gradient(top, rgba(177, 192, 220, 0), rgba(177, 192, 220, 0.5));
+}
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-top: 50px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/*Banner de inicio*/
+#carousel-banner{
+    padding: 0;
+}
+.carousel-indicators {
+    bottom: -50px;
+}
+
+.carousel-indicators li {
+    background-color: #6580a6;
+}
+
+.carousel-indicators .active {
+    background-color: #143fb0;
+}
+
+.carousel-inner {
+    margin-bottom: 50px;
+}
+
+@media screen and (max-width: 767px) {
+    #carousel-banner .smallimg {
+        display: block;
+    }
+    #carousel-banner .bigimg {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 767px) {
+    #carousel-banner .smallimg {
+        display: none;
+    }
+
+    #carousel-banner .bigimg {
+        display: block;
+    }
+}
+
+
+.carousel .item img {
+    width: 100%;
+}
+
+.carousel .item .content {
+    display: inline-block;
+    position: relative;
+}
+
+
+
+.carousel .content .btn-default {
+    background-color: #69286C;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    left: 0;
+    width: 200px;
+    height: 80px;
+    border: solid 1px #143fb0;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 4px;
+}
+
+.carousel .content .btn-default:hover {
+    color: #17dbd3;
+}
+
+
+/*Log-in input*/
+.bienvenido {
+    text-align: center;
+    font-family: 'Open Sans Condensed', sans-serif;
+    padding-bottom: 20px;
+}
+
+.input-group {
+    padding-bottom: 10px;
+}
+
+.input-group-addon {
+    color: rgb(20, 63, 176);
+}
+
+.btn-default {
+    background-color: rgb(43, 197, 191);
+    color: antiquewhite;
+}
+
+/*Nav-bar*/
+
+.navbar-brand {
+    padding-top:5px;
+    padding-bottom: 5px;
+}
+
+/*Paneles Inicio*/
+
+.panel .inicio{
+    display: inline-block;
+    width: 40%;
+}
