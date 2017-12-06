@@ -7,21 +7,18 @@ using System.Web;
 
 namespace PresLab.Models
 {
-    public class Product
+    public class Client
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long ID { get; set; }
 
-        public string Type { get; set; }
+        public string Name { get; set; }
 
-        public string Brand { get; set; }
+        public string Email { get; set; }
 
-        public string Description { get; set; }
+        public string Description { get; set;  }
 
-        public string Supplier { get; set; }
 
-        public virtual ICollection<Test> Tests { get; set; }
-        public virtual ICollection<Sampling> Samplings { get; set; }
     }
 }
