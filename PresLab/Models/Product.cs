@@ -13,8 +13,14 @@ namespace PresLab.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long ID { get; set; }
 
-        public string Name { get; set; }
+        public string Type { get; set; }
+
+        public string Brand { get; set; }
 
         public string Description { get; set; }
+
+        public string Supplier { get; set; }
+
+        public virtual ICollection<Test> Tests { get; set; }
     }
 }

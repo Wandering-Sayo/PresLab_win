@@ -6,111 +6,112 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PresLab.DAL;
 using PresLab.Models;
 
 namespace PresLab.Controllers
 {
-    public class LaboratoriesController : Controller
+    public class ProductController : Controller
     {
-        private LabPresContext db = new LabPresContext();
+        private PresLabContext db = new PresLabContext();
 
-        // GET: Laboratories
+        // GET: Product
         public ActionResult Index()
         {
-            return View(db.Laboratories.ToList());
+            return View(db.Products.ToList());
         }
 
-        // GET: Laboratories/Details/5
+        // GET: Product/Details/5
         public ActionResult Details(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Laboratory laboratory = db.Laboratories.Find(id);
-            if (laboratory == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(laboratory);
+            return View(product);
         }
 
-        // GET: Laboratories/Create
+        // GET: Product/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Laboratories/Create
+        // POST: Product/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Email,Cuit")] Laboratory laboratory)
+        public ActionResult Create([Bind(Include = "ID,Type,Brand,Description,Supplier")] Product product)
         {
             if (ModelState.IsValid)
             {
-                db.Laboratories.Add(laboratory);
+                db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(laboratory);
+            return View(product);
         }
 
-        // GET: Laboratories/Edit/5
+        // GET: Product/Edit/5
         public ActionResult Edit(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Laboratory laboratory = db.Laboratories.Find(id);
-            if (laboratory == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(laboratory);
+            return View(product);
         }
 
-        // POST: Laboratories/Edit/5
+        // POST: Product/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Email,Cuit")] Laboratory laboratory)
+        public ActionResult Edit([Bind(Include = "ID,Type,Brand,Description,Supplier")] Product product)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(laboratory).State = EntityState.Modified;
+                db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(laboratory);
+            return View(product);
         }
 
-        // GET: Laboratories/Delete/5
+        // GET: Product/Delete/5
         public ActionResult Delete(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Laboratory laboratory = db.Laboratories.Find(id);
-            if (laboratory == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(laboratory);
+            return View(product);
         }
 
-        // POST: Laboratories/Delete/5
+        // POST: Product/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            Laboratory laboratory = db.Laboratories.Find(id);
-            db.Laboratories.Remove(laboratory);
+            Product product = db.Products.Find(id);
+            db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

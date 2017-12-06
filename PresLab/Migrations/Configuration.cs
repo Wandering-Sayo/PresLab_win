@@ -5,14 +5,14 @@ namespace PresLab.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<PresLab.Models.LabPresContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<PresLab.DAL.PresLabContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(PresLab.Models.LabPresContext context)
+        protected override void Seed(PresLab.DAL.PresLabContext context)
         {
             //  This method will be called after migrating to the latest version.
 

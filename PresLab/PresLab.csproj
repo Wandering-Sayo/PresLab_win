@@ -149,7 +149,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LaboratoriesController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="DAL\PresLabInitializer.cs" />
+    <Compile Include="DAL\PresLabContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -158,13 +160,8 @@
       <DependentUpon>201712040153440_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Analysis.cs" />
-    <Compile Include="Models\Client.cs" />
-    <Compile Include="Models\Laboratory.cs" />
-    <Compile Include="Models\LabPresContext.cs" />
+    <Compile Include="Models\Test.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Sampling.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -173,7 +170,7 @@
     <Content Include="Content\img\isologo.png" />
     <Content Include="Content\img\lab_banner.jpg" />
     <Content Include="Content\img\lab_banner2.jpg" />
-    <Content Include="Content\img\lab_banner3.jpg" />
+    <Content Include="Content\img\lab_banner3b.jpg" />
     <Content Include="Content\img\mob_lab_banner1.jpg" />
     <Content Include="Content\img\mob_lab_banner2.jpg" />
     <Content Include="Content\img\mob_lab_banner3.jpg" />
@@ -209,19 +206,17 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\ClientsAll.cshtml" />
-    <Content Include="Views\Home\ProductsNew.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Welcome.cshtml" />
     <Content Include="Views\Shared\_LogInLayout.cshtml" />
     <Content Include="Views\Home\Analysis.cshtml" />
     <Content Include="Views\Home\Sampling.cshtml" />
     <Content Include="Views\Home\ClientsNew.cshtml" />
-    <Content Include="Views\Home\ProductsAll.cshtml" />
-    <Content Include="Views\Laboratories\Create.cshtml" />
-    <Content Include="Views\Laboratories\Delete.cshtml" />
-    <Content Include="Views\Laboratories\Details.cshtml" />
-    <Content Include="Views\Laboratories\Edit.cshtml" />
-    <Content Include="Views\Laboratories\Index.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
 namespace PresLab.Models
 {
-    public class Laboratory
+    public class Test
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -16,8 +15,10 @@ namespace PresLab.Models
 
         public string Name { get; set; }
 
-        public string Email { get; set; }
+        public string Description { get; set; }
 
-        public int Cuit { get; set; }
+        public int Price { get; set; }
+
+        public virtual ICollection<Product> Products { get; set; }
     }
 }
