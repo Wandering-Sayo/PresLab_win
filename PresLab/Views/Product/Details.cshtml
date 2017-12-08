@@ -41,6 +41,28 @@
         <dd>
             @Html.DisplayFor(model => model.Supplier)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tests)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Análisis</th>
+                    <th>Precio</th>
+                </tr>
+                @foreach (var item in Model.Tests)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
 
     </dl>
 </div>

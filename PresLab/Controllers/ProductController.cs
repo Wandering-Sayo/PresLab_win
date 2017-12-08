@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PresLab.DAL;
 using PresLab.Models;
+using PresLab.ViewModels;
 
 namespace PresLab.Controllers
 {
@@ -39,23 +41,31 @@ namespace PresLab.Controllers
         // GET: Product/Create
         public ActionResult Create()
         {
+            var product = new Product();
+            product.Tests = new List<Test>();
+            PopulateAssignedTestData(product);
             return View();
         }
 
-        // POST: Product/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Type,Brand,Description,Supplier")] Product product)
+        public ActionResult Create([Bind(Include = "Type,Brand,Description,Supplier")]Product product, string[] selectedTests)
         {
+            if (selectedTests != null)
+            {
+                foreach (var test in selectedTests)
+                {
+                    var testToAdd = db.Tests.Find(int.Parse(test));
+                    product.Tests.Add(testToAdd);
+                }
+            }
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            PopulateAssignedTestData(product);
             return View(product);
         }
 
@@ -66,7 +76,11 @@ namespace PresLab.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = db.Products
+                .Include(i => i.Tests)
+                .Where(i => i.ID == id)
+                .Single();
+            PopulateAssignedTestData(product);
             if (product == null)
             {
                 return HttpNotFound();
@@ -74,20 +88,85 @@ namespace PresLab.Controllers
             return View(product);
         }
 
-        // POST: Product/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        private void PopulateAssignedTestData(Product product)
+        {
+            var allTests = db.Tests;
+            var productTests = new HashSet<int>(product.Tests.Select(t => t.TestID));
+            var viewModel = new List<AssignedTestData>();
+            foreach (var test in allTests)
+            {
+                viewModel.Add(new AssignedTestData
+                {
+                    TestID = test.TestID,
+                    Name = test.Name,
+                    Assigned = productTests.Contains(test.TestID)
+                });
+            }
+            ViewBag.Courses = viewModel;
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Type,Brand,Description,Supplier")] Product product)
+        public ActionResult Edit(int? id, string[] selectedTests)
         {
-            if (ModelState.IsValid)
+            if (id == null)
             {
-                db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            return View(product);
+            var productToUpdate = db.Products
+               .Include(i => i.Tests)
+               .Where(i => i.ID == id)
+               .Single();
+
+            if (TryUpdateModel(productToUpdate, "",
+               new string[] { "Type", "Brand", "Description", "Supplier" }))
+            {
+                try
+                {
+                   
+                    UpdateProductTest(selectedTests, productToUpdate);
+
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+                catch (RetryLimitExceededException /* dex */)
+                {
+                    //Log the error (uncomment dex variable name and add a line here to write a log.
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                }
+            }
+            PopulateAssignedTestData(productToUpdate);
+            return View(productToUpdate);
+        }
+        private void UpdateProductTest(string[] selectedTests, Product productToUpdate)
+        {
+            if (selectedTests == null)
+            {
+                productToUpdate.Tests = new List<Test>();
+                return;
+            }
+
+            var selectedTestsHS = new HashSet<string>(selectedTests);
+            var productTests = new HashSet<int>
+                (productToUpdate.Tests.Select(t => t.TestID));
+            foreach (var test in db.Tests)
+            {
+                if (selectedTestsHS.Contains(test.TestID.ToString()))
+                {
+                    if (!productTests.Contains(test.TestID))
+                    {
+                        productToUpdate.Tests.Add(test);
+                    }
+                }
+                else
+                {
+                    if (productTests.Contains(test.TestID))
+                    {
+                        productToUpdate.Tests.Remove(test);
+                    }
+                }
+            }
         }
 
         // GET: Product/Delete/5

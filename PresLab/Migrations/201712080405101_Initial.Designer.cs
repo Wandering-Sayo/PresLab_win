@@ -13,7 +13,7 @@ namespace PresLab.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201712040153440_Initial"; }
+            get { return "201712080405101_Initial"; }
         }
         
         string IMigrationMetadata.Source

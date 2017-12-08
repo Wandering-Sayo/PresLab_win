@@ -11,7 +11,7 @@ namespace PresLab.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long ID { get; set; }
+        public int TestID { get; set; }
 
         public string Name { get; set; }
 

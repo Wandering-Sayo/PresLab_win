@@ -45,6 +45,34 @@
                 @Html.ValidationMessageFor(model => model.Supplier, "", new { @class = "text-danger" })
             </div>
         </div>
+         <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <table>
+                    <tr>
+                        @{
+                            int cnt = 0;
+                            List<PresLab.ViewModels.AssignedTestData> tests = ViewBag.Tests;
+
+                            foreach (var test in tests)
+                            {
+                                if (cnt++ % 3 == 0)
+                                {
+                                    @:</tr><tr>
+                                }
+                                @:<td>
+                                    <input type="checkbox"
+                                       name="selectedTests"
+                                       value="@test.TestID"
+                                       @(Html.Raw(test.Assigned ? "checked=\"checked\"" : "")) />
+                                       @test.TestID @:  @test.Name
+                                @:</td>
+                            }
+                            @:</tr>
+                        }
+                </table>
+            </div>
+        </div>
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

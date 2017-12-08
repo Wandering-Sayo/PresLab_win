@@ -15,8 +15,10 @@ namespace PresLab.Models
 
         public string ClientID { get; set; }
 
-        public DateTime Date { get; set; }
+        public DateTime RequestDate { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
+
+        public virtual Client Client { get; set; }
     }
 }
