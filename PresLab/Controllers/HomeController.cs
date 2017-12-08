@@ -48,13 +48,6 @@ namespace PresLab.Controllers
             return View();
         }
 
-        public ActionResult Analysis()
-        {
-            ViewBag.Message = "Your analysis page.";
-
-            return View();
-        }
-
         public ActionResult Sampling()
         {
             ViewBag.Message = "Your sampling page.";

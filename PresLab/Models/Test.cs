@@ -13,11 +13,16 @@ namespace PresLab.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TestID { get; set; }
 
+        [Display(Name = "Nombre")]
         public string Name { get; set; }
 
+        [Display(Name = "Descripción")]
         public string Description { get; set; }
 
-        public int Price { get; set; }
+        [Display(Name = "Precio")]
+        [DataType(DataType.Currency)]
+        [Column(TypeName = "money")]
+        public decimal Price { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
     }

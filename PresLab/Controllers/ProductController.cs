@@ -102,7 +102,7 @@ namespace PresLab.Controllers
                     Assigned = productTests.Contains(test.TestID)
                 });
             }
-            ViewBag.Courses = viewModel;
+            ViewBag.Tests = viewModel;
         }
 
         [HttpPost]

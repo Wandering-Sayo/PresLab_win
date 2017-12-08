@@ -7,13 +7,13 @@ using PresLab.Models;
 
 namespace PresLab.DAL
 {
-    public class PresLabInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<PresLabContext>
+    public class PresLabInitializer : System.Data.Entity.DropCreateDatabaseAlways<PresLabContext> // DropCreateDatabaseIfModelChanges
     {
         protected override void Seed(PresLabContext context)
         {
             var products = new List<Product>
             {
-            new Product{Type="Leche Descremada",Brand="Vaquita",Description="Larga vida, Tetrapack x1L"},
+            new Product{Type="Leche Descremada",Brand="Vaquita",Description="Larga vida, Tetrapack x1L" },
             new Product{Type="Papas Fritas",Brand="Lays",Description="Sabor original, bolsa x200gr"},
             new Product{Type="Agua Mineral",Brand="Fresh Water",Description="Bidón x5L"},
             new Product{Type="Hamburguesas",Brand="Super Mercado",Description="Caja x12u."},
@@ -26,6 +26,7 @@ namespace PresLab.DAL
 
             products.ForEach(s => context.Products.Add(s));
             context.SaveChanges();
+
             var tests = new List<Test>
             {
             new Test{Name="Relación Humedad-Proteínas",Description="lshkhsas sakbsdakjsa shbskdsa",Price=3000,},
@@ -37,9 +38,19 @@ namespace PresLab.DAL
             new Test{Name="Simanzana",Description="sdbdsa sjbas shbsda",Price=1580,},
 
             };
-            products.ForEach(s => context.Products.Add(s));
+
+            tests.ForEach(s => context.Tests.Add(s));
+
+            // var product1 = products.FirstOrDefault();
+
+            //tests.ForEach(test => product1.Tests.Add(test));
+
             context.SaveChanges();
-            
+
+
+
+
+
         }
     }
 }

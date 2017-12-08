@@ -130,7 +130,9 @@ textarea {
 
 /*Paneles Inicio*/
 
-.panel .inicio{
-    display: inline-block;
-    width: 40%;
+.panel-default .container {
+    padding-left:0;
+    padding-right: 0;
+   
 }
+

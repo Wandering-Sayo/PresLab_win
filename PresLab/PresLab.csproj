@@ -150,15 +150,28 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="DAL\PresLabConfiguration.cs" />
     <Compile Include="DAL\PresLabInitializer.cs" />
     <Compile Include="DAL\PresLabContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712080405101_Initial.cs" />
-    <Compile Include="Migrations\201712080405101_Initial.Designer.cs">
-      <DependentUpon>201712080405101_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201712081432596_Initial.cs" />
+    <Compile Include="Migrations\201712081432596_Initial.Designer.cs">
+      <DependentUpon>201712081432596_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712081523187_TestList.cs" />
+    <Compile Include="Migrations\201712081523187_TestList.Designer.cs">
+      <DependentUpon>201712081523187_TestList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712081910060_Price.cs" />
+    <Compile Include="Migrations\201712081910060_Price.Designer.cs">
+      <DependentUpon>201712081910060_Price.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712081931214_DisplayNames.cs" />
+    <Compile Include="Migrations\201712081931214_DisplayNames.Designer.cs">
+      <DependentUpon>201712081931214_DisplayNames.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Client.cs" />
@@ -209,18 +222,20 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\ClientsAll.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Welcome.cshtml" />
     <Content Include="Views\Shared\_LogInLayout.cshtml" />
-    <Content Include="Views\Home\Analysis.cshtml" />
     <Content Include="Views\Home\Sampling.cshtml" />
-    <Content Include="Views\Home\ClientsNew.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Test\Create.cshtml" />
+    <Content Include="Views\Test\Delete.cshtml" />
+    <Content Include="Views\Test\Details.cshtml" />
+    <Content Include="Views\Test\Edit.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -239,8 +254,17 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712080405101_Initial.resx">
-      <DependentUpon>201712080405101_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712081432596_Initial.resx">
+      <DependentUpon>201712081432596_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712081523187_TestList.resx">
+      <DependentUpon>201712081523187_TestList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712081910060_Price.resx">
+      <DependentUpon>201712081910060_Price.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712081931214_DisplayNames.resx">
+      <DependentUpon>201712081931214_DisplayNames.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

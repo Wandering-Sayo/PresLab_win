@@ -13,15 +13,21 @@ namespace PresLab.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
+        [Display(Name = "Tipo de Producto")]
         public string Type { get; set; }
 
+        [Display(Name = "Marca")]
         public string Brand { get; set; }
 
+        [Display(Name = "Descripción")]
         public string Description { get; set; }
 
+        [Display(Name = "Proveedor")]
         public string Supplier { get; set; }
 
+        [Display(Name = "Análisis")]
         public virtual ICollection<Test> Tests { get; set; }
+
         public virtual ICollection<Sampling> Samplings { get; set; }
     }
 }
