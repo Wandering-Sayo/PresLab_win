@@ -1,11 +1,13 @@
-﻿html {
+﻿html{
     height: 100%;
 }
 
-body {
-    height: 100%;
-    background: -webkit-linear-gradient(top, rgba(177, 192, 220, 0), rgba(177, 192, 220, 0.5));
-}
+    html > body {
+        height: 100%;
+        background: -webkit-linear-gradient(top, rgba(177, 192, 220, 0), rgba(177, 192, 220, 0.5));
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
 
 
 /* Set padding to keep content from hitting the edges */
@@ -25,6 +27,10 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 
 /*Banner de inicio*/
@@ -104,8 +110,8 @@ textarea {
 /*Log-in input*/
 .bienvenido {
     text-align: center;
-    font-family: 'Open Sans Condensed', sans-serif;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    padding-top: 20px;
 }
 
 .input-group {
@@ -128,11 +134,41 @@ textarea {
     padding-bottom: 5px;
 }
 
-/*Paneles Inicio*/
+/*Inicio*/
 
 .panel-default .container {
     padding-left:0;
     padding-right: 0;
    
 }
+
+.Titular {
+    padding-bottom: 15px;
+}
+
+.panel-title {
+    text-transform: uppercase;
+}
+
+.panel-default > .panel-heading {
+    color: whitesmoke;
+    background-color: #69286b;
+    border-color: #69286b;
+}
+
+.iso {
+    background-color: #69286B;
+    color: whitesmoke;
+    padding: 2px 7px;
+    font-size: 30px;
+    border-color: #6D566D;
+}
+
+.iso:hover {
+    background-color: #6D566D;
+    color: black;
+    border-color:#69286B;
+}
+
+
 

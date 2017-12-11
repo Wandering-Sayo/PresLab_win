@@ -157,21 +157,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712081432596_Initial.cs" />
-    <Compile Include="Migrations\201712081432596_Initial.Designer.cs">
-      <DependentUpon>201712081432596_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712081523187_TestList.cs" />
-    <Compile Include="Migrations\201712081523187_TestList.Designer.cs">
-      <DependentUpon>201712081523187_TestList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712081910060_Price.cs" />
-    <Compile Include="Migrations\201712081910060_Price.Designer.cs">
-      <DependentUpon>201712081910060_Price.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712081931214_DisplayNames.cs" />
-    <Compile Include="Migrations\201712081931214_DisplayNames.Designer.cs">
-      <DependentUpon>201712081931214_DisplayNames.cs</DependentUpon>
+    <Compile Include="Migrations\201712102249249_Initial.cs" />
+    <Compile Include="Migrations\201712102249249_Initial.Designer.cs">
+      <DependentUpon>201712102249249_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Client.cs" />
@@ -211,7 +199,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -254,17 +244,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712081432596_Initial.resx">
-      <DependentUpon>201712081432596_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712081523187_TestList.resx">
-      <DependentUpon>201712081523187_TestList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712081910060_Price.resx">
-      <DependentUpon>201712081910060_Price.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712081931214_DisplayNames.resx">
-      <DependentUpon>201712081931214_DisplayNames.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712102249249_Initial.resx">
+      <DependentUpon>201712102249249_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

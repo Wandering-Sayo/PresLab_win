@@ -1,14 +1,15 @@
 ﻿@model IEnumerable<PresLab.Models.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Productos";
 }
 
-<h2>Index</h2>
+<h2>Productos</h2>
 
-<p>
-    @Html.ActionLink("Crear Nuevo", "Create")
-</p>
+<a href="@Url.Action("Create", "Product")" class="btn btn-default btn-lg pull-right iso">
+    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+</a>
+   
 <table class="table">
     <tr>
         <th>
@@ -52,9 +53,16 @@
             }
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID })
+            <a href="@Url.Action("Details", "Product", new { id=item.ID })" class="btn btn-default iso-sm">
+                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+            </a>
+            <a href="@Url.Action("Edit", "Product" , new { id=item.ID })" class="btn btn-default iso-sm">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+            </a>
+            <a href="@Url.Action("Delete", "Product", new { id=item.ID })" class="btn btn-default iso-sm">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            </a>
+            
         </td>
     </tr>
 }

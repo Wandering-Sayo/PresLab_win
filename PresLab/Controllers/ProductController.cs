@@ -53,6 +53,7 @@ namespace PresLab.Controllers
         {
             if (selectedTests != null)
             {
+                product.Tests = new List<Test>();
                 foreach (var test in selectedTests)
                 {
                     var testToAdd = db.Tests.Find(int.Parse(test));

@@ -7,13 +7,13 @@ namespace PresLab.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DisplayNames : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DisplayNames));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712081931214_DisplayNames"; }
+            get { return "201712102249249_Initial"; }
         }
         
         string IMigrationMetadata.Source
