@@ -28,6 +28,6 @@ namespace PresLab.Models
         [Display(Name = "Análisis")]
         public virtual ICollection<Test> Tests { get; set; }
 
-        public virtual ICollection<Sampling> Samplings { get; set; }
+        public virtual ICollection<Order> Samplings { get; set; }
     }
 }

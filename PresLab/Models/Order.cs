@@ -7,18 +7,22 @@ using System.Web;
 
 namespace PresLab.Models
 {
-    public class Sampling
+    public class Order
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long ID { get; set; }
+        public int ID { get; set; }
 
         public string ClientID { get; set; }
 
+        public Client Client { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Fecha de Pedido")]
         public DateTime RequestDate { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Product> Samplings { get; set; }
 
-        public virtual Client Client { get; set; }
     }
 }

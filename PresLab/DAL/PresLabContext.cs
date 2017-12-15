@@ -13,11 +13,22 @@ namespace PresLab.DAL
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Test> Tests { get; set; }
-        
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Client> Clients { get; set; }        
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<Product>()
+                .HasMany<Order>(c => c.Samplings)
+                .WithMany(s => s.Samplings)
+                .Map(us =>
+                {
+                    us.MapLeftKey("ProductId");
+                    us.MapRightKey("OrderId");
+                    us.ToTable("Samplings");
+                });
         }
     }
 }
