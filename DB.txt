@@ -1,0 +1,360 @@
+INSERT INTO Test(Name, Description, Price)
+VALUES ('Proteínas','Recuento de Proteínas','3000');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('Grasas','Presencia de Grasas trans, saturadas e insaturadas','2580');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('Hidratos de Carbono','Contenido Calórico','1200');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('Cloruros','Concentración de Cloruros','5000');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('Cenizas','Determinación de humedad','3560');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('Nitratos','Concentración de Nitratos','3240');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('Nitritos','Concentración de Nitritos','1580');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('Gliadinas','Determinación de Gluten','2340');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('Dioxido de Azufre','Presencia de S02','1600');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('Índice de Peróxidos','Determinación de oxidación','1450');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('Acidez Acuosa','Descripción','3000');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('pH','Determinación de basicidad o acidez','1300');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('Índice de Refracción','Descripción','1340');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('Sorbato de Potasio','Presencia de conservantes','4060');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('Índice de Iodo','Descripción','1270');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('Salmonella','Presencia de Salmonella','3600');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('Listeria','Presencia de Salmonella','3670');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('O157','Microbiológico','5480');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('Coliformes Totales','Presencia de Bacterias','3500');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('E.Coli','Presencia de Esteriqia Coli','3450');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('Hongos y Levaduras','Determinación de nivel de Contaminación','3670');
+INSERT INTO Test(Name, Description, Price)
+VALUES ('Aerobios Mesófilos','Recuento total de microorganismos','3670');
+
+
+INSERT INTO Category (Name)
+VALUES ('Grasos, Aceiter y Afines');
+INSERT INTO Category (Name)
+VALUES ('Lácteos');
+INSERT INTO Category (Name)
+VALUES ('Farináceos');
+INSERT INTO Category (Name)
+VALUES ('Azucarados');
+INSERT INTO Category (Name)
+VALUES ('Vegetales');
+INSERT INTO Category (Name)
+VALUES ('Bebidas Hídricas, Agua y Aguas Gasificadas');
+INSERT INTO Category (Name)
+VALUES ('Bebidas Fermentadas');
+INSERT INTO Category (Name)
+VALUES ('Bebidas Espirituosas, Alcoholicas y Licores');
+INSERT INTO Category (Name)
+VALUES ('Alimentos de Régimen o Dietéticos');
+INSERT INTO Category (Name)
+VALUES ('Harinas, Concentrados, Derivados Proteínicos');
+INSERT INTO Category (Name)
+VALUES ('Cárneos y Afines')
+
+INSERT INTO Client (Name, Email, Description)
+VALUES ('Frigorífico El Viejo','administracion@elviejo.com.ar', 'Elaboración de fiambres y chacinados');
+INSERT INTO Client (Name, Email, Description)
+VALUES ('Cliente de Prueba','clienteprueba@hotmail.com','Ejemplo muestreo');
+INSERT INTO Client (Name, Email, Description)
+VALUES ('Supermercado Marko','calidad@marko.com.ar','Supermercado Mayorista');
+INSERT INTO Client (Name, Email, Description)
+VALUES ('Castillo','maria.lopez@castillo.com','Elaboración aceitunas y derivados de oliva');
+INSERT INTO Client (Name, Email, Description)
+VALUES ('Montefiore S.R.L.','jose.calidad2@montefioresrl.com.ar','Elaboración de jugos');
+INSERT INTO Client (Name, Email, Description)
+VALUES ('NewCringe','contacto@newcringe.com.ar','Elaboración de helados indutriales');
+
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Leche Entera','Circulo','KArga Vida, Tetrapack x1Lt.', 'Masteyone', '2');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Hraina de Trigo','Blancajor','000, Paquete x1Kg', 'Blancajor', '10');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Medallones de Carne','MyK','Congelados, caja x4u.', 'Frigorífico MyK', '11');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Papas Fritas','Kachitos','Tradicional, Bolsa x600gr.', 'Kachitos S.A.', '5');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Pulpa de Tomate','Sabores del Campo','Botella de vidrio x950gr.', 'Sabores del Campo S.R.L.', '5');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Queso Cremoso','Criculo','Orma x2Kg', 'Lácteos Eme', '2');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Fiambre de Cerdo','Circulo','Barra x5Kg', 'Frigorífico El Viejo', '11');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Azúcar','MyK','Blanca granulada, Bolsa x1Kg.', 'Tres Valles', '4');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Café','Arlisán','Instantáneo, frasco x170gr.', 'Arlisán S.A.', '10');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Harina de Trigo','MyK','Tipo 0000, Paquete x1Kg', 'Molienda La Paz', '10');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Harina de Trigo','MyK','Leudante, Tipo 0000, Paquete x1Kg', 'Molienda La Paz', '10');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Aceitunas','Castillo','Verdes, descarozadas, Paquete x500gr.', 'Castillo', '5');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Fideos','Circulo','Mostachol, Paquete x500gr', 'Molienda La Paz', '3');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Aceite de Oliva','Castillo','Extra Virgen, Botella x250cm3', 'Castillo', '1');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Mermelada','MyK','Sabot ciruela, Frasco x454gr', 'La Campayola', '4');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Agua Mineral','Circulo','Sin gas, Botella x1Lt', 'Fresh Water', '6');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Agua Saborizada','Circulo','Sabor manzana, Botella x500mL', 'Fresh Water', '6');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Helado','New Cringe','Tres Sabores, Balde x3Lt', 'New Cringe', '4');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Tapas Empanada','MyK','Criollas, roticeras, Paquete x12u.', 'Molienda La Paz', '3');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Manteca','Primer Puesto','Pan x 200gr.', 'Vaquita S.R.L.', '2');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Leche Entera','Primer Puesto','Sachet x1Lt', 'Vaquita S.R.L.', '2');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Leche Descremada','Primer Puesto','Sachet x1Lt', 'Vaquita S.R.L.', '2');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Leche Entera','Primer Puesto','Larga Vida, Tetrapack x1Lt', 'Vaquita S.R.L.', '2');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Bondiola','El Viejo','Envasada al vacío x1.5Kg', 'El Viejo', '11');
+INSERT INTO Product (Type, Brand, Description, Supplier, CategoryID)
+VALUES ('Jamón Crudo','El Viejo','Sin hueso, en mitad, envasado al vacío', 'El Viejo', '11');
+
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('1','1');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('2','1');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('11','1');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('20','1');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('22','1');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('3','2');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('8','2');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('13','2');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('14','2');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('18','2');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('1','3');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('2','3');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('6','3');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('7','3');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('16','3');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('19','3');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('20','3');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('2','4');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('5','4');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('9','4');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('21','4');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('11','5');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('12','5');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('14','5');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('22','5');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('1','6');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('18','6');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('21','6');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('1','7');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('2','7');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('6','7');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('7','7');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('16','7');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('20','7');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('5','8');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('13','8');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('15','8');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('5','9');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('7','9');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('12','9');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('14','9');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('3','10');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('8','10');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('14','10');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('15','10');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('3','11');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('8','11');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('14','11');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('15','11');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('2','12');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('11','12');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('18','12');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('22','12');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('3','13');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('8','13');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('9','13');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('18','13');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('2','14');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('10','14');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('4','15');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('6','15');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('12','15');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('14','15');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('22','15');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('4','16');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('6','16');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('7','16');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('12','16');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('20','16');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('4','17');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('6','17');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('7','17');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('12','17');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('20','17');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('4','18');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('11','18');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('13','18');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('22','18');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('3','19');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('8','19');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('21','19');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('1','20');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('2','20');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('18','20');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('19','20');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('1','21');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('10','21');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('19','21');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('22','21');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('1','22');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('14','22');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('19','22');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('22','22');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('1','23');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('10','23');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('19','23');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('22','23');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('1','24');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('2','24');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('6','24');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('7','24');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('16','24');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('17','24');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('19','24');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('20','24');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('1','25');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('2','25');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('6','25');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('7','25');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('16','25');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('17','25');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('20','25');
+INSERT INTO TestProduct (Test_TestID,Product_ID)
+VALUES ('21','25');
+

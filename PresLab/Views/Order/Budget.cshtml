@@ -1,0 +1,64 @@
+﻿@using PresLab.Models
+@model PresLab.Models.Order
+
+@{
+    ViewBag.Title = "Budget";
+}
+
+<h2>Budget</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Cliente
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequestDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequestDate)
+        </dd>
+        <dt>
+            Productos
+        </dt>
+        <dd>
+            <div>
+                @{ decimal precioTotal = 0; }
+                @foreach (PresLab.Models.Product product in Model.Samplings)
+                {
+
+                    @product.Type 
+                    @product.Brand
+                    <ul>
+                    @foreach (PresLab.Models.Test test in product.Tests)
+                    {
+                        <li>@test.Name</li>
+                        <li>@test.Price.ToString("C2")</li>
+                        precioTotal += test.Price;
+                    }
+                    </ul>
+                }
+            </div>
+        </dd>
+        <dt>
+            Precio total
+        </dt>
+
+        <dd>
+            @precioTotal.ToString("C2")
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

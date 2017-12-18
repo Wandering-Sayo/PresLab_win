@@ -28,8 +28,13 @@ namespace PresLab.Controllers
         }
 
         // GET: Order/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, int? SelectedClient)
         {
+            var clients = db.Clients.OrderBy(q => q.Name).ToList();
+            ViewBag.SelectedClient = new SelectList(clients, "ClientID", "Name", SelectedClient);
+            int clientID = SelectedClient.GetValueOrDefault();
+            var orders = db.Orders.Include(o => o.Client);
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -209,6 +214,27 @@ namespace PresLab.Controllers
                                    select c;
             ViewBag.ClientID = new SelectList(clientsQuery, "ClientID", "Name", selectedClient);
         }
+
+        // GET: Order/Budget/6
+        public ActionResult Budget(int? id , int? SelectedClient)
+        {
+            var clients = db.Clients.OrderBy(q => q.Name).ToList();
+            ViewBag.SelectedClient = new SelectList(clients, "ClientID", "Name", SelectedClient);
+            int clientID = SelectedClient.GetValueOrDefault();
+            var orders = db.Orders.Include(o => o.Client);
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Order order = db.Orders.Find(id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            return View(order);
+        }
+
 
         private void PopulateAssignedProductData(Order order)
         {
