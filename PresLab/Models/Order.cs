@@ -11,9 +11,9 @@ namespace PresLab.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
+        public int OrderID { get; set; }
 
-        public string ClientID { get; set; }
+        public int ClientID { get; set; }
 
         public Client Client { get; set; }
 
@@ -23,6 +23,5 @@ namespace PresLab.Models
         public DateTime RequestDate { get; set; }
 
         public virtual ICollection<Product> Samplings { get; set; }
-
     }
 }

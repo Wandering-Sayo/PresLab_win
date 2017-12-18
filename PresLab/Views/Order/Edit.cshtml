@@ -15,12 +15,12 @@
         <h4>Order</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.OrderID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ClientID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ClientID, "ClientID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ClientID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("ClientID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ClientID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -30,6 +30,34 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.RequestDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.RequestDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <table>
+                    <tr>
+                        @{
+                            int cnt = 0;
+                            List<PresLab.ViewModels.AssignedProductData> products = ViewBag.Samplings;
+
+                            foreach (var product in products)
+                            {
+                                if (cnt++ % 3 == 0)
+                                {
+                                    @:</tr><tr>
+                                }
+                                @:<td>
+                                    <input type="checkbox"
+                                       name="selectedProducts"
+                                       value="@product.ProductID"
+                                       @(Html.Raw(product.Assigned ? "checked=\"checked\"" : "")) />
+                                       @product.Type @:  @product.Brand
+                                @:</td>
+                            }
+                            @:</tr>
+                        }
+                </table>
             </div>
         </div>
 

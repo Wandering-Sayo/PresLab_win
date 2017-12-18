@@ -7,18 +7,14 @@ using System.Web;
 
 namespace PresLab.Models
 {
-    public class Client
+    public class Category
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ClientID { get; set; }
+        public int CategoryID { get; set; }
 
+        [Display(Name = "Nombre")]
         public string Name { get; set; }
-
-        public string Email { get; set; }
-
-        public string Description { get; set;  }
-
 
     }
 }

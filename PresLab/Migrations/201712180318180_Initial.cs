@@ -3,33 +3,41 @@ namespace PresLab.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Models : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
             CreateTable(
+                "dbo.Category",
+                c => new
+                    {
+                        CategoryID = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.CategoryID);
+            
+            CreateTable(
                 "dbo.Client",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
+                        ClientID = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         Email = c.String(),
                         Description = c.String(),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ClientID);
             
             CreateTable(
                 "dbo.Order",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
-                        ClientID = c.String(),
+                        OrderID = c.Int(nullable: false, identity: true),
+                        ClientID = c.Int(nullable: false),
                         RequestDate = c.DateTime(nullable: false),
-                        Client_ID = c.Int(),
                     })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Client", t => t.Client_ID)
-                .Index(t => t.Client_ID);
+                .PrimaryKey(t => t.OrderID)
+                .ForeignKey("dbo.Client", t => t.ClientID, cascadeDelete: true)
+                .Index(t => t.ClientID);
             
             CreateTable(
                 "dbo.Product",
@@ -40,8 +48,11 @@ namespace PresLab.Migrations
                         Brand = c.String(),
                         Description = c.String(),
                         Supplier = c.String(),
+                        CategoryID = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Category", t => t.CategoryID, cascadeDelete: true)
+                .Index(t => t.CategoryID);
             
             CreateTable(
                 "dbo.Test",
@@ -88,18 +99,21 @@ namespace PresLab.Migrations
             DropForeignKey("dbo.TestProduct", "Test_TestID", "dbo.Test");
             DropForeignKey("dbo.Samplings", "OrderId", "dbo.Order");
             DropForeignKey("dbo.Samplings", "ProductId", "dbo.Product");
-            DropForeignKey("dbo.Order", "Client_ID", "dbo.Client");
+            DropForeignKey("dbo.Product", "CategoryID", "dbo.Category");
+            DropForeignKey("dbo.Order", "ClientID", "dbo.Client");
             DropIndex("dbo.TestProduct", new[] { "Product_ID" });
             DropIndex("dbo.TestProduct", new[] { "Test_TestID" });
             DropIndex("dbo.Samplings", new[] { "OrderId" });
             DropIndex("dbo.Samplings", new[] { "ProductId" });
-            DropIndex("dbo.Order", new[] { "Client_ID" });
+            DropIndex("dbo.Product", new[] { "CategoryID" });
+            DropIndex("dbo.Order", new[] { "ClientID" });
             DropTable("dbo.TestProduct");
             DropTable("dbo.Samplings");
             DropTable("dbo.Test");
             DropTable("dbo.Product");
             DropTable("dbo.Order");
             DropTable("dbo.Client");
+            DropTable("dbo.Category");
         }
     }
 }

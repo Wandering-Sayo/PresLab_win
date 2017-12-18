@@ -7,13 +7,14 @@ using System.Web;
 
 namespace PresLab.Models
 {
+
     public class Product
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
-        [Display(Name = "Tipo de Producto")]
+        [Display(Name = "Denominación")]
         public string Type { get; set; }
 
         [Display(Name = "Marca")]
@@ -24,6 +25,10 @@ namespace PresLab.Models
 
         [Display(Name = "Proveedor")]
         public string Supplier { get; set; }
+
+        public int CategoryID { get; set; }
+        [Display(Name = "Categoría")]
+        public Category Category { get; set; }
 
         [Display(Name = "Análisis")]
         public virtual ICollection<Test> Tests { get; set; }

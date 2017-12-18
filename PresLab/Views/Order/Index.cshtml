@@ -1,10 +1,11 @@
-﻿@model IEnumerable<PresLab.Models.Order>
+﻿@using PresLab.Models
+@model IEnumerable<PresLab.Models.Order>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Muestreo";
 }
 
-<h2>Index</h2>
+<h2>Historial de Muestreos</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,7 +13,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Client.Name)
+            Nº de Muestreo
+        </th>
+        <th>
+            Cliente
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RequestDate)
@@ -20,8 +24,12 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderID)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Client.Name)
         </td>
@@ -29,9 +37,9 @@
             @Html.DisplayFor(modelItem => item.RequestDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+           
+            @Html.ActionLink("Details", "Details", new { id=item.OrderID }) 
+            
         </td>
     </tr>
 }

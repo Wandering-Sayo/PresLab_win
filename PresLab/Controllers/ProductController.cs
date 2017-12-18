@@ -41,6 +41,8 @@ namespace PresLab.Controllers
         // GET: Product/Create
         public ActionResult Create()
         {
+            PopulateCategoriesDropDownList();
+
             var product = new Product();
             product.Tests = new List<Test>();
             PopulateAssignedTestData(product);
@@ -49,30 +51,42 @@ namespace PresLab.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Type,Brand,Description,Supplier")]Product product, string[] selectedTests)
+        public ActionResult Create([Bind(Include = "Type,Brand,Description,Supplier, CategoryID")]Product product, string[] selectedTests)
         {
-            if (selectedTests != null)
+            try
             {
-                product.Tests = new List<Test>();
-                foreach (var test in selectedTests)
+                if (selectedTests != null)
                 {
-                    var testToAdd = db.Tests.Find(int.Parse(test));
-                    product.Tests.Add(testToAdd);
+                    product.Tests = new List<Test>();
+                    foreach (var test in selectedTests)
+                    {
+                        var testToAdd = db.Tests.Find(int.Parse(test));
+                        product.Tests.Add(testToAdd);
+                    }
+                }
+                if (ModelState.IsValid)
+                {
+                    db.Products.Add(product);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
                 }
             }
-            if (ModelState.IsValid)
+            catch (RetryLimitExceededException /* dex */)
             {
-                db.Products.Add(product);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                //Log the error (uncomment dex variable name and add a line here to write a log.)
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
             }
+            PopulateCategoriesDropDownList(product.CategoryID);
             PopulateAssignedTestData(product);
             return View(product);
-        }
+
+
+       }
 
         // GET: Product/Edit/5
-        public ActionResult Edit(long? id)
+        public ActionResult Edit(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -86,6 +100,7 @@ namespace PresLab.Controllers
             {
                 return HttpNotFound();
             }
+            PopulateCategoriesDropDownList(product.CategoryID);
             return View(product);
         }
 
@@ -106,7 +121,7 @@ namespace PresLab.Controllers
             ViewBag.Tests = viewModel;
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int? id, string[] selectedTests)
         {
@@ -114,13 +129,15 @@ namespace PresLab.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             var productToUpdate = db.Products
                .Include(i => i.Tests)
                .Where(i => i.ID == id)
                .Single();
+               
 
             if (TryUpdateModel(productToUpdate, "",
-               new string[] { "Type", "Brand", "Description", "Supplier" }))
+               new string[] { "Type", "Brand", "Description", "Supplier", "CategoryID" }))
             {
                 try
                 {
@@ -137,9 +154,19 @@ namespace PresLab.Controllers
                     ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
                 }
             }
+            PopulateCategoriesDropDownList(productToUpdate.CategoryID);
             PopulateAssignedTestData(productToUpdate);
             return View(productToUpdate);
         }
+
+        private void PopulateCategoriesDropDownList(object selectedCategory = null)
+        {
+            var categoriesQuery = from c in db.Categories
+                                   orderby c.Name
+                                   select c;
+            ViewBag.CategoryID = new SelectList(categoriesQuery, "CategoryID", "Name", selectedCategory);
+        }
+
         private void UpdateProductTest(string[] selectedTests, Product productToUpdate)
         {
             if (selectedTests == null)

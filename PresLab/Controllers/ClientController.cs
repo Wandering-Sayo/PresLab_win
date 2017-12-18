@@ -79,7 +79,7 @@ namespace PresLab.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Email,Description")] Client client)
+        public ActionResult Edit([Bind(Include = "ClientID,Name,Email,Description")] Client client)
         {
             if (ModelState.IsValid)
             {
