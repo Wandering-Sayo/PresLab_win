@@ -4,42 +4,48 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="container index">
+    <h2>Análisis</h2>
+    <table class="table">
+        <tr class="table-header">
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                <a href="@Url.Action("Create", "Test")" class="btn btn-default btn-lg pull-right iso">
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                </a>
+            </th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr class="table-data">
+                <td class="main">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a href="@Url.Action("Delete", "Test", new { id=item.TestID })" class="btn btn-default iso-sm pull-right">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </a>
+                    <a href="@Url.Action("Edit", "Test" , new { id=item.TestID })" class="btn btn-default iso-sm pull-right">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </a>   
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TestID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TestID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TestID })
-        </td>
-    </tr>
-}
-
-</table>
+    </table>
+</div>

@@ -5,43 +5,47 @@
     ViewBag.Title = "Muestreo";
 }
 
-<h2>Historial de Muestreos</h2>
+<div class="container index">
+    <h2>Historial de Muestreos</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Nº de Muestreo
-        </th>
-        <th>
-            Cliente
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RequestDate)
-        </th>
-        <th></th>
-    </tr>
+    <table class="table">
+        <tr class="table-header">
+            <th>
+                Muestreo Nº
+            </th>
+            <th>
+                Cliente
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequestDate)
+            </th>
+            <th>
+                <a href="@Url.Action("Create", "Order")" class="btn btn-default btn-lg pull-right iso">
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                </a>
+            </th>
+        </tr>
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Client.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RequestDate)
-        </td>
-        <td>
-           
-            @Html.ActionLink("Details", "Details", new { id=item.OrderID }) 
-            
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr class="table-data">
+                <td class="main">
+                    @Html.DisplayFor(modelItem => item.OrderID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Client.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequestDate)
+                </td>
+                <td>
+                    <a class="btn budget btn-default pull-right" href="@Url.Action("Budget", "Order", new { id=item.OrderID })" type="submit">Presupuestar</a>
+                    <a href="@Url.Action("Details", "Order", new { id=item.OrderID })" class="btn btn-default iso-sm pull-right">
+                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                    </a>
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>

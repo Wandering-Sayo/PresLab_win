@@ -5,31 +5,71 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Order</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Cliente
-        </dt>
 
-        <dd>
-           @Html.DisplayFor(model => model.Client.Name)
-        </dd>
+<div class="details">
+    <div class="details-header">
+        <h2>Muestreo Nº: @Html.DisplayFor(model => model.OrderID)</h2>
+        <h4>Detalle de Muestreo</h4>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-5">
+                <label class="pull-right">
+                    Cliente
+                </label>
+            </div>
+            <div class="col-xs-7">
+                <p>
+                    @Html.DisplayFor(model => model.Client.Name)
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5">
+                <label class="pull-right">
+                    @Html.DisplayNameFor(model => model.RequestDate)
+                </label>
+            </div>
+            <div class="col-xs-7">
+                <p>
+                    @Html.DisplayFor(model => model.RequestDate)
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container inside-tables">
+        <h3>
+            <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+        </h3>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RequestDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RequestDate)
-        </dd>
-
-    </dl>
+        <div>
+            <table class="table">
+                <tr class="table-header inside-tables">
+                    <th>Denominación</th>
+                    <th>Marca</th>
+                    <th>Descripción</th>
+                </tr>
+                @foreach (var item in Model.Samplings)
+                {
+                    <tr class="table-data">
+                        <td class="main">
+                            @Html.DisplayFor(modelItem => item.Type)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Brand)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
 </div>
-<p>
-    |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div>
+    <a href="@Url.Action("Index", "Order")" class="btn btn-default iso-sm return">
+        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+    </a>
+</div>

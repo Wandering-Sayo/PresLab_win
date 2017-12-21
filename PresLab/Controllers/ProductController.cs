@@ -24,8 +24,13 @@ namespace PresLab.Controllers
         }
 
         // GET: Product/Details/5
-        public ActionResult Details(long? id)
+        public ActionResult Details(long? id, int? SelectedCategory)
         {
+            var categories = db.Categories.OrderBy(q => q.Name).ToList();
+            ViewBag.SelectedCategory = new SelectList(categories, "CategoryID", "Name", SelectedCategory);
+            int categoryID = SelectedCategory.GetValueOrDefault();
+            var products = db.Products.Include(o => o.Category);
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

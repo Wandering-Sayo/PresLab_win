@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LogInLayout.cshtml";
+    ViewBag.Title = "Contact";
+}
+
+
+<div class="container contact">
+        <div class="container header">
+            <h2>Envíenos Su Mensaje</h2>
+            <span class="glyphicon glyphicon-envelope"></span>
+            <p>Obtenga información de como implementar LabPres en su laboratorio.</p>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <form action="@Url.Action("GetContact", "Home")" method="post">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group narrow">
+                            <label for="nombre" class="input-group-addon">Nombre: </label>
+                            <input name="name" type="text" class="form-control" placeholder="Ingrese su nombre" required>
+                        </div>
+                        <div class="input-group narrow">
+                            <label for="mail" class="input-group-addon">Mail: </label>
+                            <input name="email" type="email" class="form-control" placeholder="Ingrese su dirección de email" required>
+                        </div>
+                        <div class="input-group narrow">
+                            <label for="phone" class="input-group-addon">Phone: </label>
+                            <input name="phone" type="tel" class="form-control" placeholder="Ingrese su Nº de teléfono" required>
+                        </div>
+                    </div>
+                    <div class="input-group col-md-6 contact-msj">
+                        <label for="mensaje" class="input-group-addon" id="basic-addon1">Mensaje: </label>
+                        <textarea name="message" class="form-control" maxlength="250" required></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-group col-xs-2 col-xs-offset-5">
+                        <button type="submit" class="btn btn-default">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="container">
+            <img src="~/Content/img/LogoCyan.png" class="contact-logo"/>
+        </div>
+</div>
