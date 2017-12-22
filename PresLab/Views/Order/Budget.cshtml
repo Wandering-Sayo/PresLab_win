@@ -2,63 +2,74 @@
 @model PresLab.Models.Order
 
 @{
-    ViewBag.Title = "Budget";
+    ViewBag.Title = "Presupuesto";
 }
 
-<h2>Budget</h2>
-
-<div>
-    <h4>Order</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Cliente
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Client.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RequestDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RequestDate)
-        </dd>
-        <dt>
-            Productos
-        </dt>
-        <dd>
-            <div>
-                @{ decimal precioTotal = 0; }
-                @foreach (PresLab.Models.Product product in Model.Samplings)
-                {
-
-                    @product.Type 
-                    @product.Brand
-                    <ul>
-                    @foreach (PresLab.Models.Test test in product.Tests)
-                    {
-                        <li>@test.Name</li>
-                        <li>@test.Price.ToString("C2")</li>
-                        precioTotal += test.Price;
-                    }
-                    </ul>
-                }
+<div class="create">
+    <div class="create-header">
+        <h2>Muestreo Nº: @Html.DisplayFor(model => model.OrderID)</h2>
+        <h4>Presupuesto</h4>
+    </div>
+    <div class="container col-md-10 col-md-offset-1">
+        <div class="row">
+            <div class="col-xs-6 budget-data">
+                <label>Cliente</label>
+                <p> @Html.DisplayFor(model => model.Client.Name)</p>
             </div>
-        </dd>
-        <dt>
-            Precio total
-        </dt>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 budget-data">
+                <label>@Html.DisplayNameFor(model => model.RequestDate)</label>
+                <p>@Html.DisplayFor(model => model.RequestDate)</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container col-md-8 col-md-offset-2">
+                <div class="row">
+                    <h3 class="budget"><i class="fa fa-shopping-basket" aria-hidden="true"></i></h3>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        @{ decimal precioTotal = 0; }
+                        @foreach (PresLab.Models.Product product in Model.Samplings)
+                        {
 
-        <dd>
-            @precioTotal.ToString("C2")
-        </dd>
-
-    </dl>
+                            <h4 class="budget">@product.Type</h4>
+                            @product.Brand
+                            <ul class="budget">
+                                @foreach (PresLab.Models.Test test in product.Tests)
+                                {
+                                    <li>
+                                        <div class="col-xs-6 icons"><i class="fa fa-flask" aria-hidden="true"></i>
+                                        @test.Name</div>
+                                        <div class="col-xs-6"><p class="pull-right">@test.Price.ToString("C2")</p></div>
+                                     </li>
+                                    precioTotal += test.Price;
+                                }
+                            </ul>
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container col-md-8 col-md-offset-4">
+                        <div class="col-xs-12">
+                            <h4 class="pull-right">
+                                Precio total:
+                                @precioTotal.ToString("C2")
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-default pull-right">
+                <span class="glyphicon glyphicon-floppy-disk"></span>
+            </button>
+            <a href="@Url.Action("Index", "Order")" class="btn btn-default iso-sm common">
+                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

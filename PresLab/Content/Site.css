@@ -13,6 +13,7 @@
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-top: 50px;
+    padding-bottom:50px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -262,6 +263,7 @@ ul.inicio > li {
 
 
 /*Clientes, Productos, Análisis, Muestreo elementos comunes*/
+/*Botones*/
 .iso {
     background-color: #69286B;
     color: whitesmoke;
@@ -270,16 +272,22 @@ ul.inicio > li {
     border-color: #6D566D;
     margin-bottom: 5px;
 }
+    .iso:hover {
+        background-color: #222222;
+        color: ghostwhite;
+        border-color: #69286B;
+    }
 
-.iso-sm.return {
-    background-color: #143fb0;
-}
-
-.iso:hover {
+.iso-sm.common {
     background-color: #222222;
     color: ghostwhite;
-    border-color:#69286B;
 }
+    .iso-sm.common:hover {
+        background-color: ghostwhite;
+        color: #222222;
+        border-color: gray;
+    }
+
 
 div.container.index {
     margin-top: -20px;
@@ -325,22 +333,6 @@ tr.table-data > td.main {
         color: #222222;
     }
 
-div.details {
-    padding-bottom: 50px;
-}
-
-    div.details > div.details-header > h2 {
-        color: #69286b;
-    }
-
-    div.details > div.details-header > h4 {
-        color: #6d566d;
-    }
-
-    div.details > div.details-header {
-        padding-bottom: 50px;
-    }
-
 div.container.inside-tables {
     margin-top:20px;
     margin-bottom: 40px;
@@ -359,6 +351,25 @@ div.container.inside-tables > h3 {
     color: #143fb0;
     padding-bottom: 10px;
 }
+
+/*Details*/
+div.details {
+    padding-bottom: 50px;
+}
+
+    div.details > div.details-header > h2 {
+        color: #17dbd3;
+    }
+
+    div.details > div.details-header > h4 {
+        color: grey;
+    }
+
+    div.details > div.details-header {
+        padding-bottom: 50px;
+    }
+
+
 /*Clientes*/
 div .container > div.client {
     text-align: center;
@@ -370,5 +381,104 @@ i.fa.fa-user-circle-o {
     color: #222222;
 }
 
+/*Edit*/
+div.edit {
+    padding-bottom: 50px;
+}
+
+    div.edit > div.edit-header > h2 {
+        color: #143FB0;
+    }
+
+    div.edit > div.edit-header > h4 {
+        color: #6580A6;
+    }
+
+    div.edit > div.edit-header {
+        padding-bottom: 50px;
+    }
+
+div.narrow > .form-control.edit {
+    border-bottom-right-radius: 4px !important;
+    border-top-right-radius: 4px !important;
+}
+
+div > .edit-wide {
+    height: 95px;
+}
+
+    div > .edit-wide > .form-control.edit {
+        height: inherit;
+    }
+
+.checkbox-container{
+    border: solid 2px white;
+    padding-bottom: 15px;
+}
+
+div.container.inside-tables.edit {
+    border: solid 2px white;
+    width: 95%;
+}
+
+div.container.inside-tables > h3.edit {
+    color: #17dbd3;
+
+}
+
+/*Create*/
+div.create {
+    padding-bottom: 50px;
+}
+
+    div.create > div.create-header > h2 {
+        color: #69286b;
+    }
+
+    div.create > div.create-header > h4 {
+        color: #6d566d;
+    }
+
+    div.create > div.create-header {
+        padding-bottom: 50px;
+    }
+
+.input-group-addon.create {
+    color: #69286B;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-transform: uppercase;
+}
 
 
+div.container.inside-tables > h3.create {
+    color: #69286b;
+}
+
+/*Budget*/
+ul.budget {
+    list-style: none;
+    padding: 0;
+}
+
+ul.budget > div.icons {
+    padding-right: 0 !important;
+}
+
+div.budget-data{
+    display:flex;
+}
+
+    div.budget-data > label {
+        margin-right: 10px;
+        color: #69286B;
+        font-family: 'Open Sans Condensed', sans-serif;
+        text-transform: uppercase;
+    }
+
+h3.budget{
+    text-align:center;
+    font-size:4em;
+}
+h4.budget {
+    margin-bottom: 0;
+}

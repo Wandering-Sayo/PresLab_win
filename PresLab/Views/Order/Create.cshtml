@@ -1,77 +1,82 @@
-﻿@model PresLab.Models.Order
+﻿@using PresLab.Models
+@model PresLab.Models.Order
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Crear Nuevo";
 }
 
-<h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Order</h4>
-        <hr />
+
+    <div class="create">
+        <div class="create-header">
+            <h2>Muestreo</h2>
+            <h4>Crear Nuevo</h4>
+        </div>
+        <div class="container col-md-10 col-md-offset-1">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="input-group narrow">
+                        @Html.LabelFor(model => model.Client, htmlAttributes: new { @class = "input-group-addon create" })
+                        @Html.DropDownList("ClientID", null, htmlAttributes: new { @class = "form-control edit" })
+                        @Html.ValidationMessageFor(model => model.ClientID, "", new { @class = "text-danger" })
+                    </div>
 
-        <div class="form-group">
-            <label class="control-label col-md-2" for="ClientID">Cliente</label>
-            <div class="col-md-10">
-                @Html.DropDownList("ClientID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ClientID, "", new { @class = "text-danger" })
+                    <div class="input-group narrow">
+                        @Html.LabelFor(model => model.RequestDate, htmlAttributes: new { @class = "input-group-addon create" })
+                        @Html.EditorFor(model => model.RequestDate, new { htmlAttributes = new { @class = "form-control edit" } })
+                        @Html.ValidationMessageFor(model => model.RequestDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="container inside-tables edit">
+                    <h3 class="create"><i class="fa fa-shopping-basket" aria-hidden="true"></i></h3>
+                    <div>
+                        <table class="col-md-12">
+                            <tr>
+                                @{
+                                    int cnt = 0;
+                                    List<PresLab.ViewModels.AssignedProductData> products = ViewBag.Products;
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.RequestDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RequestDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RequestDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">Prdocutos a Analizar</label>
-            <div class="col-md-10">
-                <table>
-                    <tr>
-                        @{
-                            int cnt = 0;
-                            List<PresLab.ViewModels.AssignedProductData> products = ViewBag.Products;
-
-                            foreach (var product in products)
-                            {
-                                if (cnt++ % 1 == 0)
-                                {
-                                    @:</tr><tr>
+                                    foreach (var product in products)
+                                    {
+                                        if (cnt++ % 2 == 0)
+                                        {
+                                            @:</tr><tr>
+                                        }
+                                        @:<td>
+                                            <input type="checkbox"
+                                               name="selectedProducts"
+                                               value="@product.ProductID"
+                                               @(Html.Raw(product.Assigned ? "checked=\"checked\"" : "")) />
+                                               <strong>@product.Type </strong>@:, Marca: @product.Brand
+                                        @:</td>
+                                    }
+                                    @:</tr>
                                 }
-                                @:<td>
-                                    <input type="checkbox"
-                                       name="selectedProducts"
-                                       value="@product.ProductID"
-                                       @(Html.Raw(product.Assigned ? "checked=\"checked\"" : "")) />
-                                       @product.Type @:, Marca: @product.Brand
-                                @:</td>
-                            }
-                            @:</tr>
-                        }
-                </table>
+                        </table>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="row">
+                <button type="submit" class="btn btn-default iso-sm common pull-right">
+                    <span class="glyphicon glyphicon-floppy-disk"></span>
+                </button>
+                <a href="@Url.Action("Index", "Order")" class="btn btn-default iso-sm common">
+                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                </a>
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -13,10 +13,12 @@ namespace PresLab.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ClientID { get; set; }
 
+        [Display(Name = "Nombre")]
         public string Name { get; set; }
 
         public string Email { get; set; }
 
+        [Display(Name = "Descripción")]
         public string Description { get; set;  }
 
 

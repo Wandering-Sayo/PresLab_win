@@ -5,93 +5,91 @@
     ViewBag.Title = "Crear Nuevo";
 }
 
-<h2>Crear Nuevo</h2>
-
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>Producto</h4>
-        <hr />
+    <div class="create">
+        <div class="create-header">
+            <h2>Producto</h2>
+            <h4>Crear Nuevo</h4>
+        </div>
+        <div class="container col-md-10 col-md-offset-1">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Type, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group narrow">
+                        @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "input-group-addon create" })
+                        @Html.EditorFor(model => model.Type, new { htmlAttributes = new { @class = "form-control edit" } })
+                        @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Brand, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Brand, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="input-group narrow">
+                        @Html.LabelFor(model => model.Brand, htmlAttributes: new { @class = "input-group-addon create" })
+                        @Html.EditorFor(model => model.Brand, new { htmlAttributes = new { @class = "form-control edit" } })
+                        @Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })
+                    </div>
 
-        <div class="form-group">
-            <label class="control-label col-md-2" for="CategoryID">Categoría</label>
-            <div class="col-md-10">
-                @Html.DropDownList("CategoryID", String.Empty)
-                @Html.ValidationMessageFor(model => model.CategoryID)
+                    <div class="input-group narrow">
+                        <label class="input-group-addon create" for="CategoryID">Categoría</label>
+                        @Html.DropDownListFor(x => x.CategoryID, (IEnumerable<SelectListItem>)ViewBag.CategoryID, new { @class = "form-control edit" })
+                        @Html.ValidationMessageFor(model => model.CategoryID)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group narrow">
+                        @Html.LabelFor(model => model.Supplier, htmlAttributes: new { @class = "input-group-addon create" })
+                        @Html.EditorFor(model => model.Supplier, new { htmlAttributes = new { @class = "form-control edit" } })
+                        @Html.ValidationMessageFor(model => model.Supplier, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="input-group edit-wide">
+                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "input-group-addon create" })
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control edit" } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="row">
+                 <div class="container inside-tables edit">
+                    <h3 class="create"><i class="fa fa-flask" aria-hidden="true"></i></h3>
+                    <div>
+                        <table class="col-md-12">
+                            <tr>
+                                @{
+                                    int cnt = 0;
+                                    List<PresLab.ViewModels.AssignedTestData> tests = ViewBag.Tests;
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Supplier, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Supplier, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Supplier, "", new { @class = "text-danger" })
-            </div>
-        </div>
-         <div class="form-group">
-            <label class="control-label col-md-2">Análisis</label>
-            <div class="col-md-offset-2 col-md-10">
-                <table>
-                    <tr>
-                        @{
-                            int cnt = 0;
-                            List<PresLab.ViewModels.AssignedTestData> tests = ViewBag.Tests;
-
-                            foreach (var test in tests)
-                            {
-                                if (cnt++ % 3 == 0)
-                                {
-                                    @:</tr><tr>
+                                    foreach (var test in tests)
+                                    {
+                                        if (cnt++ % 3 == 0)
+                                        {
+                                            @:</tr><tr>
+                                        }
+                                        @:<td>
+                                            <input type="checkbox"
+                                               name="selectedTests"
+                                               value="@test.TestID"
+                                               @(Html.Raw(test.Assigned ? "checked=\"checked\"" : "")) />
+                                               @test.Name
+                                        @:</td>
+                                    }
+                                    @:</tr>
                                 }
-                                @:<td>
-                                    <input type="checkbox"
-                                       name="selectedTests"
-                                       value="@test.TestID"
-                                       @(Html.Raw(test.Assigned ? "checked=\"checked\"" : "")) />
-                                       @test.Name
-                                @:</td>
-                            }
-                            @:</tr>
-                        }
-                </table>
+                        </table>
+                    </div>
+                </div>
             </div>
-        </div>
 
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="row">
+                <button type="submit" class="btn btn-default iso-sm common pull-right">
+                    <span class="glyphicon glyphicon-floppy-disk"></span>
+                </button>
+                <a href="@Url.Action("Index", "Product")" class="btn btn-default iso-sm common">
+                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                </a>
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Volver", "Index")
-</div>
+
