@@ -358,3 +358,10 @@ VALUES ('20','25');
 INSERT INTO TestProduct (Test_TestID,Product_ID)
 VALUES ('21','25');
 
+INSERT INTO [dbo].[User]
+           ([Mail]
+           ,[Password])
+     VALUES
+           ('administrador@laboratorio.com'
+           ,'administrador')
+GO

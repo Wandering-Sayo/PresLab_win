@@ -15,7 +15,8 @@ namespace PresLab.DAL
         public DbSet<Category> Categories { get; set; }
         public DbSet<Test> Tests { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<Client> Clients { get; set; }        
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

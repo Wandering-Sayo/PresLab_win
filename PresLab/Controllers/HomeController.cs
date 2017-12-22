@@ -5,15 +5,36 @@ using System.Net;
 using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
+using PresLab.DAL;
+using PresLab.Models;
 
 namespace PresLab.Controllers
 {
     public class HomeController : Controller
     {
+        private PresLabContext db = new PresLabContext();
+
         public ActionResult Index()
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult DoLogin(string mail, string password)
+        {
+            
+            User user = db.Users.FirstOrDefault(u => u.Mail.Equals(mail));
+            if (user != null
+                && user.Password.Equals(password)) 
+            {
+                Session["LoggedUser"] = user; 
+                return RedirectToAction("Welcome", "Home");
+            }
+            
+            return RedirectToAction("Index", "Home");
+        }
+
+
 
         public ActionResult Welcome()
         {

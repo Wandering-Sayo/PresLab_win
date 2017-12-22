@@ -169,12 +169,17 @@
     <Compile Include="Migrations\201712180318180_Initial.Designer.cs">
       <DependentUpon>201712180318180_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712221925272_User Login.cs" />
+    <Compile Include="Migrations\201712221925272_User Login.Designer.cs">
+      <DependentUpon>201712221925272_User Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AssignedProductData.cs" />
     <Compile Include="ViewModels\AssignedTestData.cs" />
@@ -293,6 +298,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -310,6 +316,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712180318180_Initial.resx">
       <DependentUpon>201712180318180_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712221925272_User Login.resx">
+      <DependentUpon>201712221925272_User Login.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
