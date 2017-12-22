@@ -10,6 +10,7 @@ using PresLab.DAL;
 using PresLab.Models;
 using System.Data.Entity.Infrastructure;
 using PresLab.ViewModels;
+using Postal;
 
 namespace PresLab.Controllers
 {
@@ -234,6 +235,24 @@ namespace PresLab.Controllers
             }
             return View(order);
         }
+        [HttpPost, ActionName("Print")]
+        [ValidateAntiForgeryToken]
+        public ActionResult PrintProyect(int? id, int? SelectedClient)
+        {
+
+            Order order = db.Orders.Find(id);
+            var clients = db.Clients.OrderBy(q => q.Name).ToList();
+            ViewBag.SelectedClient = new SelectList(clients, "ClientID", "Name", "Email" , SelectedClient);
+            int clientID = SelectedClient.GetValueOrDefault();
+            var clientEmail = ViewBag.SelectedClient.Email;
+
+            dynamic email = new Email("Budget");
+            email.To = clientEmail;
+            email.Send();
+            return View();
+        }
+
+
 
 
         private void PopulateAssignedProductData(Order order)

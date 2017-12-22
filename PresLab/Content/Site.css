@@ -368,8 +368,13 @@ div.details {
     div.details > div.details-header {
         padding-bottom: 50px;
     }
-
-
+tr.table-header.inside-tables.details > th{
+        color: #17dbd3;
+        border-bottom: solid #17dbd3 1px;
+    }
+div.container.inside-tables > h3.details {
+    color: #17dbd3;
+}
 /*Clientes*/
 div .container > div.client {
     text-align: center;
@@ -422,9 +427,14 @@ div.container.inside-tables.edit {
 }
 
 div.container.inside-tables > h3.edit {
-    color: #17dbd3;
-
+    color: #143fb0;
 }
+.input-group-addon.edit {
+    color: #143fb0;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-transform: uppercase;
+}
+
 
 /*Create*/
 div.create {
@@ -482,3 +492,37 @@ h3.budget{
 h4.budget {
     margin-bottom: 0;
 }
+
+/*Delete*/
+div.delete {
+    padding-bottom: 50px;
+}
+
+    div.delete > div.delete-header > h2 {
+        color: #222222;
+    }
+
+    div.delete > div.delete-header > h4 {
+        color: grey;
+    }
+
+    div.delete > div.delete-header {
+        padding-bottom: 20px;
+    }
+.container.delete{
+    background-color:#222222;
+    padding-top:20px;
+    padding-bottom: 20px;
+    color: ghostwhite;
+
+}
+    .container.delete > div.delete-warning{
+        text-align:center;
+    }
+
+        .container.delete > div.delete-warning > span {
+            color: #69286b;
+            font-size: 40px;
+            padding-bottom:20px;
+            padding-top:35px;
+        }
